@@ -1,5 +1,7 @@
 # LOL HTML JavaScript API
 
+A temporary fork from [cloudflare/lol-html](https://github.com/cloudflare/lol-html) to support `element.onEndTag`
+
 ## Example
 
 ```js
@@ -18,6 +20,10 @@ rewriter.on('a[href]', {
       .getAttribute('href')
       .replace('http:', 'https:');
     el.setAttribute('href', href);
+
+    el.onEndTag((tag)=> {
+      console.log(`Tag ended: ${tag.name}`);
+    });
   },
 });
 
